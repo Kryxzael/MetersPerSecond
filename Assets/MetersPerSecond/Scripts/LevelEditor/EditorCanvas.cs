@@ -1,4 +1,5 @@
-﻿using Assets.MetersPerSecond.Scripts.LevelEditor;
+﻿using Assets.MetersPerSecond.Scripts;
+using Assets.MetersPerSecond.Scripts.LevelEditor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,9 @@ public class EditorCanvas : MonoBehaviour
     private void OnMouseDown()
     {
         EditorController ctrl = FindObjectOfType<EditorController>();
+
+        if (FindObjectOfType<LevelLoader>().Playing)
+            return;
 
         Vector2 clickedPositionExact = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 clickedPosition = new Vector2((int)clickedPositionExact.x + 0.5f, (int)clickedPositionExact.y - 0.5f);

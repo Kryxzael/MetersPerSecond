@@ -18,11 +18,19 @@ namespace Assets.MetersPerSecond.Scripts
             get => FindObjectsOfType<SyncPoint>().Length;
         }
 
+        int Id
+        {
+            get => FindObjectsOfType<SyncPoint>().TakeWhile(i => i != this).Count();
+        }
+
 
         protected override void OnObjectEnter(TrackObject obj)
         {
             SyncCount++;
             CancelInvoke(nameof(Drop));
+
+            GetComponentInChildren<Glow>().Pulse();
+            FindObjectOfType<SoundManager>().PlaySFX((Id % 4) + 1);
 
             if (SyncCount >= TotalSyncPoints)
             {

@@ -16,6 +16,8 @@ namespace Assets.MetersPerSecond.Scripts
 
         public GameObject[] HideOnPlayObjects;
 
+        public GameObject[] HideOnEditObjects;
+
         public void PlayPause()
         {
             if (Playing)
@@ -26,7 +28,7 @@ namespace Assets.MetersPerSecond.Scripts
 
         public void Play()
         {
-            _persistantObjects = FindObjectsOfType<GameObject>();
+            _persistantObjects = FindObjectsOfType<GameObject>().Concat(HideOnEditObjects).ToArray();
             AssetRepresentation[] assets = FindObjectsOfType<AssetRepresentation>();
 
             foreach (AssetRepresentation i in assets)
@@ -40,6 +42,9 @@ namespace Assets.MetersPerSecond.Scripts
             foreach (GameObject i in HideOnPlayObjects)
                 i.SetActive(false);
 
+            foreach (GameObject i in HideOnEditObjects)
+                i.SetActive(true);
+
         }
 
         public void Pause()
@@ -50,13 +55,16 @@ namespace Assets.MetersPerSecond.Scripts
                     Destroy(i);
             }
 
-            foreach (GameObject i in _persistantObjects) 
+            foreach (GameObject i in _persistantObjects.Where(i => i != null)) //Destroyed objects equate to null 
                 i.SetActive(true);
 
             Playing = false;
 
             foreach (GameObject i in HideOnPlayObjects)
                 i.SetActive(true);
+
+            foreach (GameObject i in HideOnEditObjects)
+                i.SetActive(false);
         }
     }
 }

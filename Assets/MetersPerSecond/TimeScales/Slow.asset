@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Slow
   m_EditorClassIdentifier: 
   TimeScale: 0.5
-  Color: {r: 0, g: 0.35730076, b: 1, a: 1}
+  Color: {r: 0, g: 0.35460997, b: 1, a: 0.39215687}

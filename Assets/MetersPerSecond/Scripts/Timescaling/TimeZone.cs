@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.MetersPerSecond.Scripts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,9 @@ public class TimeZone : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (FindObjectOfType<LevelLoader>()?.Playing == false)
+            return;
+
         ApplyTimeScale((TimeScaleIndex + 1) % TimeScales.Length);
     }
 
