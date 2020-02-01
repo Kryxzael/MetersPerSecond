@@ -7,11 +7,12 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    public float Speed;
+    public float Speed = 2f;
+    public float Multiplier = 1f;
 
     private void Update()
     {
-        transform.position += transform.up * Speed * Time.deltaTime;
+        transform.position += transform.up * Speed * Time.deltaTime * Multiplier;
     }
 
     public void SetDirection(Vector2 direction)
