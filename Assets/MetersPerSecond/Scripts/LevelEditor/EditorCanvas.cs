@@ -27,7 +27,7 @@ public class EditorCanvas : MonoBehaviour
 
         AssetRepresentation clickedAsset = GetAssetAtPoint(clickedPosition);
 
-        if (clickedAsset != null && !(ctrl.SelectedAsset.MayPlaceOver))
+        if (clickedAsset != null)
         {
             if (Input.GetMouseButtonDown((int)MouseButton.LeftMouse))
             {

@@ -1573,7 +1573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d96a75555a4fa841b9bf1e63419d818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EditorGrid: {fileID: 1490620744}
+  HideOnPlayObjects: []
 --- !u!1 &1787535347
 GameObject:
   m_ObjectHideFlags: 0
