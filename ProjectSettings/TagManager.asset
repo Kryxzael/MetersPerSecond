@@ -41,15 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 3973681071
-    locked: 0
-  - name: Middlebackground
-    uniqueID: 245654759
-    locked: 0
-  - name: Middleground
-    uniqueID: 2838955243
-    locked: 0
-  - name: Foreground
+  - name: BG_Balls
     uniqueID: 3179507509
+    locked: 0
+  - name: TimeZones
+    uniqueID: 4100706119
+    locked: 0
+  - name: Glow
+    uniqueID: 3605281105
+    locked: 0
+  - name: Tracks
+    uniqueID: 3367776211
+    locked: 0
+  - name: SyncPoints
+    uniqueID: 3074006375
+    locked: 0
+  - name: Sparks
+    uniqueID: 627229817
     locked: 0

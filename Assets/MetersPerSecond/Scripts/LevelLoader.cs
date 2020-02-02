@@ -18,6 +18,14 @@ namespace Assets.MetersPerSecond.Scripts
 
         public GameObject[] HideOnEditObjects;
 
+        private void Start()
+        {
+            FindObjectOfType<SoundManager>().PlayRandomMusic();
+
+            foreach (GameObject i in HideOnEditObjects)
+                i.SetActive(false);
+        }
+
         public void PlayPause()
         {
             if (Playing)
@@ -49,6 +57,7 @@ namespace Assets.MetersPerSecond.Scripts
 
         public void Pause()
         {
+
             foreach (GameObject i in FindObjectsOfType<GameObject>())
             {
                 if (!_persistantObjects.Contains(i))

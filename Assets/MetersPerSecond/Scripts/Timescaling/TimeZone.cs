@@ -49,6 +49,7 @@ public class TimeZone : MonoBehaviour
             return;
 
         ApplyTimeScale((TimeScaleIndex + 1) % TimeScales.Length);
+        FindObjectOfType<SoundManager>().PlayRandomMusic();
     }
 
     public void ApplyTimeScale(int index)

@@ -16,5 +16,15 @@ public class MovementController : MonoBehaviour
     }
 
     public void SetDirection(Vector2 direction)
-        => transform.SetEuler2D(Vector2.up.RealAngleBetween(direction));
+    {
+        if (direction.normalized == Vector2.up)
+            transform.SetEuler2D(0);
+        if (direction.normalized == Vector2.down)
+            transform.SetEuler2D(180);
+        if (direction.normalized == Vector2.right)
+            transform.SetEuler2D(-90);
+        if (direction.normalized == Vector2.left)
+            transform.SetEuler2D(-270);
+
+    }
 }

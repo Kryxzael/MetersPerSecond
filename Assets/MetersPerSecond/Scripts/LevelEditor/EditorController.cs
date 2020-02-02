@@ -2,10 +2,13 @@
 using SFB;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.MetersPerSecond.Scripts.LevelEditor
 {
@@ -16,9 +19,42 @@ namespace Assets.MetersPerSecond.Scripts.LevelEditor
         public AssetRepresentation SelectedAsset;
         public float LastRotationAngle = 0;
 
-        public void Save()
+        private static bool _enviromentSet;
+
+        private void Start()
         {
+#if !UNITY_EDITOR
+            if (!_enviromentSet)
+            {
+                string path = Path.Combine(Application.dataPath, "levels");
+
+                try
+                {
+                    if (!System.IO.Directory.Exists(path))
+                        Directory.CreateDirectory(path);
+                }
+                catch (IOException ex)
+                {
+                    Debug.LogWarning(ex.Message);
+                    Debug.LogWarning(ex.StackTrace);
+                    return;
+                }
+
+                Environment.CurrentDirectory = path;
+
+
+                _enviromentSet = true;
+            }
+#endif
+        }
+
+        public void Save()
+        {       
+#if UNITY_EDITOR
             string path = StandaloneFileBrowser.SaveFilePanel("Save map file", Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "file.clhier", "clhier");
+#else
+            string path = FindObjectOfType<InputField>().text;
+#endif
 
             if (path == null)
                 return;
@@ -36,7 +72,11 @@ namespace Assets.MetersPerSecond.Scripts.LevelEditor
 
         public void Load() 
         {
+#if UNITY_EDITOR
             string path = StandaloneFileBrowser.OpenFilePanel("Open a map file", Environment.GetFolderPath(Environment.SpecialFolder.Desktop), new ExtensionFilter[] { new ExtensionFilter("Map files", "clhier") }, false).FirstOrDefault();
+#else
+            string path = FindObjectOfType<InputField>().text;
+#endif
 
             if (path == null)
                 return;

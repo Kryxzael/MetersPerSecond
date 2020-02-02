@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/MetersPerSecond/Scenes/PlayScene.unity
-    guid: d7054fae3ff8b34449b1b8ab41a642bf
+    path: Assets/MetersPerSecond/Scenes/Menu.unity
+    guid: 703f7c5e62bae574582d1cd8ad64f18b
+  - enabled: 1
+    path: Assets/MetersPerSecond/Scenes/LevelCreator.unity
+    guid: daab94bf455cf7349a7e8875a2dab57d
   m_configObjects: {}

@@ -18,7 +18,7 @@ namespace Assets.MetersPerSecond.Scripts
             get => FindObjectsOfType<SyncPoint>().Length;
         }
 
-        int Id
+        public int Id
         {
             get => FindObjectsOfType<SyncPoint>().TakeWhile(i => i != this).Count();
         }
@@ -28,18 +28,22 @@ namespace Assets.MetersPerSecond.Scripts
         {
             SyncCount++;
             CancelInvoke(nameof(Drop));
-
-            GetComponentInChildren<Glow>().Pulse();
-            FindObjectOfType<SoundManager>().PlaySFX((Id % 4) + 1);
+            Pulse();
 
             if (SyncCount >= TotalSyncPoints)
             {
-                //End the game maybe?
-                Debug.Log("You did it bro and that is pretty cool");
+                FindObjectOfType<LevelClear>().Clear();
+                SyncCount = 0;
                 return;
             }
 
             Invoke(nameof(Drop), DROP_TIME);
+        }
+
+        public void Pulse()
+        {
+            GetComponentInChildren<Glow>().Pulse();
+            FindObjectOfType<SoundManager>().PlaySFX((Id % 4) + 1);
         }
 
         private void Drop()

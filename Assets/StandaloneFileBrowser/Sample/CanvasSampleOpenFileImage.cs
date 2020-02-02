@@ -46,8 +46,9 @@ public class CanvasSampleOpenFileImage : MonoBehaviour, IPointerDownHandler {
 #endif
 
     private IEnumerator OutputRoutine(string url) {
-        var loader = new WWW(url);
-        yield return loader;
-        output.texture = loader.texture;
+        //var loader = new WWW(url);
+        //yield return loader;
+        //output.texture = loader.texture;
+        yield break;
     }
 }
